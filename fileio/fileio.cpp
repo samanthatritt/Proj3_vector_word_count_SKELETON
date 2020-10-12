@@ -2,9 +2,9 @@
  * fileio.h
  *
  *  Created on: Sep 26, 2020
- *      Author: keith
+ *      Author: Samantha Tritt
  */
-
+#define FILEIO_H_
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -23,11 +23,13 @@ bool openFile(std::fstream& myfile, const std::string& myFileName,
 	return true;
 }
 
+
 /*iff myfile is open then close it*/
 void closeFile(std::fstream& myfile){
 	if (myfile.is_open())
 		myfile.close();
 }
+
 
 /* serializes all content in entries to file outputfilename
  * check out utils for helpful type conversion functions
@@ -36,15 +38,14 @@ void closeFile(std::fstream& myfile){
  * 			SUCCESS if all data is written and outputfilename closes OK
  * */
 int writetoFile(std::vector<constants::entry>  &entries, const std::string &outputfilename){
-
 	std::ofstream outfile;
-	outfile.open(outputfilename);
+	outfile.open(outputfilename.c_str());
 
-	if(outfile.is_open())
+	if(outfile.is_open()== false)
 		return constants::FAIL_FILE_DID_NOT_OPEN;
-	if (entries.size() == 0)
+	if (entries.empty())
 				return constants::FAIL_NO_ARRAY_DATA;
-	for(int i=0; i<entries.size(); i++){
+	for(int i=0; i<entries.size(); i++)
 		outfile<<entries[i].word<<" "<<intToString(entries[i].number_occurences)<<std::endl;
 
 	if(outfile.is_open())
@@ -53,6 +54,7 @@ int writetoFile(std::vector<constants::entry>  &entries, const std::string &outp
 	return constants::SUCCESS;
 
 
-	}
+
 }
+
 

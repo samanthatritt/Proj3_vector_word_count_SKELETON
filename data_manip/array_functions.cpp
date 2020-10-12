@@ -2,7 +2,7 @@
  * functionstocomplete.h
  *
  *  Created on: Sep 10, 2017
- *      Author: keith
+ *      Author: Samantha Tritt
  */
 #include <iostream>
 #include <fstream>
@@ -31,27 +31,27 @@ namespace KP{
 		entries.clear();
 	}
 
+
 	//how many unique words are in the vector
 	int getSize(std::vector<constants::entry>  &entries)
 	{
-		entries.size();
 		return entries.size();
 	}
+
 
 	//get data at a particular location, if i>size() then get the last value in the vector
 	//(this is lazy, should throw an exception instead)
 	std::string getWordAt(std::vector<constants::entry>  &entries, int i){
-		if (i> entries.size()){
-			return entries[entries.size()-1].word;
+		if (i> entries.size())
+			return entries[entries.size() - 1].word;
 		return entries[i].word;
-	}
-}
 
+
+	}
 	int getNumbOccurAt(std::vector<constants::entry>  &entries,int i){
-		if (i> entries.size()){
+		if (i> entries.size())
 					return entries[entries.size()-1].number_occurences;
 		return entries[i].number_occurences;
-	}
 }
 
 	/*loop through whole file, one line at a time
@@ -124,7 +124,6 @@ bool goingup(entry samone, entry samtwo){
 
 }
 
-
 bool goingdown(entry samone, entry samtwo){
 	toUpper(samone.word);
 	toUpper(samtwo.word);
@@ -155,4 +154,3 @@ case NONE:
 
 }
 }
-
